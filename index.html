@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What happened to Frankie?</title>
+    <!-- Y2K / grunge / digital fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Share+Tech+Mono&family=Syne:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #09070c;
+            --panel-bg: #120e17;
+            --graphite: #1c1722;
+            --purple-neon: #a222ef;
+            --purple-glow: rgba(162, 34, 239, 0.4);
+            --pink-accent: #ff2a85;
+            --text-main: #d0c8db;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* CRT scanline effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            z-index: 999;
+            background-size: 100% 4px, 4px 100%;
+            pointer-events: none;
+        }
+
+        .wall-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #181220 0%, #09070c 80%);
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            background: var(--panel-bg);
+            border: 2px solid #282033;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(162, 34, 239, 0.1);
+            padding: 35px 50px;
+            max-width: 650px;
+            width: 90%;
+            position: relative;
+        }
+
+        /* Missing person style title */
+        .graffiti-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.2rem;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 5px;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.8);
+            transform: rotate(-1.5deg);
+        }
+
+        /* FRANKIE in glowing purple */
+        .graffiti-title span {
+            color: var(--purple-neon);
+            text-shadow: 0 0 12px var(--purple-neon), 3px 3px 0px rgba(0,0,0,0.9);
+        }
+
+        .sub-tag {
+            font-size: 0.85rem;
+            color: #8a7a9e;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        /* Countdown */
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .time-segment {
+            background: var(--graphite);
+            border: 1px solid #362c44;
+            padding: 10px 12px;
+            min-width: 70px;
+            box-shadow: 0 0 10px var(--purple-glow);
+        }
+
+        .time-number {
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 0 0 8px var(--purple-neon);
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.65rem;
+            color: #7d6e8c;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .target-info {
+            font-size: 0.8rem;
+            color: #a89bb8;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            border-top: 1px dashed #282033;
+            border-bottom: 1px dashed #282033;
+            padding: 8px 0;
+        }
+
+        .warning-text {
+            font-size: 0.75rem;
+            color: var(--pink-accent);
+            letter-spacing: 2px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+        /* Revealed section ("Meet Her") after timer ends */
+        .reveal-section {
+            display: none;
+            animation: glitch-appear 0.8s ease-in-out forwards;
+        }
+
+        .meet-header {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px var(--purple-neon);
+        }
+
+        .meet-link {
+            display: inline-block;
+            background: rgba(162, 34, 239, 0.15);
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border: 2px solid var(--purple-neon);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px var(--purple-neon);
+            transition: all 0.3s ease;
+        }
+
+        .meet-link:hover {
+            background: var(--purple-neon);
+            border-color: #fff;
+            color: #000;
+            box-shadow: 0 0 30px var(--purple-neon);
+            transform: scale(1.05);
+        }
+
+        @keyframes glitch-appear {
+            0% { opacity: 0; transform: scale(0.95); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .footer-tag {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.65rem;
+            color: #4a3d59;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wall-bg"></div>
+
+    <div class="container">
+        <!-- View before time runs out -->
+        <div id="countdown-view">
+            <h1 class="graffiti-title">What happened to<br><span>Frankie?</span></h1>
+            <div class="sub-tag">Investigation Active</div>
+
+            <div class="target-info">Truth revealed on: 24.10.2026 &mdash; 21:00</div>
+
+            <div class="countdown-box">
+                <div class="time-segment">
+                    <span class="time-number" id="days">00</span>
+                    <span class="time-label">DAYS</span>
+                </div>
+                <div class="time-segment">
+                    <span class="time-number" id="hours">00</span>
+                    <span class="time-label">HOURS</span>
+                </div>
+                <div class="time-segment">
+                    <span class="time-number" id="minutes">00</span>
+                    <span class="time-label">MIN</span>
+                </div>
+                <div class="time-segment">
+                    <span class="time-number" id="seconds">00</span>
+                    <span class="time-label">SEC</span>
+                </div>
+            </div>
+
+            <p class="warning-text">The clock is ticking. Don't look away.</p>
+        </div>
+
+        <!-- View after time runs out (Meet Her) -->
+        <div id="reveal-view" class="reveal-section">
+            <h2 class="meet-header">MEET HER</h2>
+            <p class="sub-tag" style="margin-bottom: 20px;">The files have been unlocked. She's back.</p>
+            <!-- Change the link below to the singer's material -->
+            <a href="https://www.youtube.com/watch?v=YOUR_LINK_HERE" target="_blank" class="meet-link">Open Material</a>
+        </div>
+    </div>
+
+    <div class="footer-tag">FRANKIE_CASE_FILE_2026 // ALL RIGHTS RESERVED</div>
+
+    <script>
+        // Target date: October 24, 2026, 21:00:00
+        const targetTime = new Date("October 24, 2026 21:00:00").getTime();
+
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const timeLeft = targetTime - now;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById("countdown-view").style.display = "none";
+                document.getElementById("reveal-view").style.display = "block";
+            } else {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
