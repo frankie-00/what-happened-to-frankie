@@ -34,6 +34,7 @@
             align-items: center;
             overflow-x: hidden;
             position: relative;
+            padding: 20px; /* Margines dla telefonów, żeby treść nie kleiła się do krawędzi */
         }
 
         /* CRT scanline effect */
@@ -61,22 +62,34 @@
             background: var(--panel-bg);
             border: 2px solid #282033;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(162, 34, 239, 0.1);
-            padding: 35px 50px;
+            padding: 30px 20px;
             max-width: 650px;
-            width: 90%;
+            width: 100%;
             position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 35px 50px;
+            }
         }
 
         /* Missing person style title */
         .graffiti-title {
             font-family: 'Permanent Marker', cursive;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: #fff;
             text-transform: uppercase;
             line-height: 1.1;
             margin-bottom: 5px;
             text-shadow: 3px 3px 0px rgba(0,0,0,0.8);
             transform: rotate(-1.5deg);
+        }
+
+        @media (min-width: 768px) {
+            .graffiti-title {
+                font-size: 2.2rem;
+            }
         }
 
         /* FRANKIE in glowing purple */
@@ -86,59 +99,107 @@
         }
 
         .sub-tag {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: #8a7a9e;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .sub-tag {
+                font-size: 0.85rem;
+                letter-spacing: 3px;
+                margin-bottom: 30px;
+            }
         }
 
         /* Countdown */
         .countdown-box {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 8px;
             margin-bottom: 25px;
+            flex-wrap: wrap; /* Zawijanie segmentów na bardzo małych ekranach */
+        }
+
+        @media (min-width: 768px) {
+            .countdown-box {
+                gap: 15px;
+            }
         }
 
         .time-segment {
             background: var(--graphite);
             border: 1px solid #362c44;
-            padding: 10px 12px;
-            min-width: 70px;
+            padding: 8px 6px;
+            min-width: 65px;
             box-shadow: 0 0 10px var(--purple-glow);
         }
 
+        @media (min-width: 768px) {
+            .time-segment {
+                padding: 10px 12px;
+                min-width: 70px;
+            }
+        }
+
         .time-number {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             color: #fff;
             text-shadow: 0 0 8px var(--purple-neon);
             display: block;
         }
 
+        @media (min-width: 768px) {
+            .time-number {
+                font-size: 2.2rem;
+            }
+        }
+
         .time-label {
-            font-size: 0.65rem;
+            font-size: 0.55rem;
             color: #7d6e8c;
             letter-spacing: 1px;
             margin-top: 4px;
             display: block;
         }
 
+        @media (min-width: 768px) {
+            .time-label {
+                font-size: 0.65rem;
+            }
+        }
+
         .target-info {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #a89bb8;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             margin-bottom: 20px;
             border-top: 1px dashed #282033;
             border-bottom: 1px dashed #282033;
             padding: 8px 0;
         }
 
+        @media (min-width: 768px) {
+            .target-info {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
+            }
+        }
+
         .warning-text {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--pink-accent);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             animation: pulse 1.5s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .warning-text {
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+            }
         }
 
         @keyframes pulse {
@@ -155,11 +216,18 @@
 
         .meet-header {
             font-family: 'Syne', sans-serif;
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: #fff;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             margin-bottom: 15px;
             text-shadow: 0 0 15px var(--purple-neon);
+        }
+
+        @media (min-width: 768px) {
+            .meet-header {
+                font-size: 2rem;
+                letter-spacing: 5px;
+            }
         }
 
         .meet-link {
@@ -167,13 +235,22 @@
             background: rgba(162, 34, 239, 0.15);
             color: #fff;
             text-decoration: none;
-            padding: 15px 30px;
+            padding: 12px 20px;
             border: 2px solid var(--purple-neon);
-            font-size: 1.1rem;
-            letter-spacing: 3px;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             box-shadow: 0 0 20px var(--purple-neon);
             transition: all 0.3s ease;
+            word-break: break-all;
+        }
+
+        @media (min-width: 768px) {
+            .meet-link {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+                letter-spacing: 3px;
+            }
         }
 
         .meet-link:hover {
@@ -191,11 +268,20 @@
         }
 
         .footer-tag {
-            position: absolute;
-            bottom: 10px;
-            font-size: 0.65rem;
+            margin-top: 15px;
+            font-size: 0.55rem;
             color: #4a3d59;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-tag {
+                position: absolute;
+                bottom: 10px;
+                margin-top: 0;
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+            }
         }
     </style>
 </head>
@@ -207,7 +293,7 @@
         <!-- View before time runs out -->
         <div id="countdown-view">
             <h1 class="graffiti-title">What happened to<br><span>Frankie?</span></h1>
-            <div class="sub-tag">Investigation Active</div>
+            <div class="sub-tag">Missing Person File // Investigation Active</div>
 
             <div class="target-info">Truth revealed on: 24.10.2026 &mdash; 21:00</div>
 
@@ -238,7 +324,7 @@
             <h2 class="meet-header">MEET HER</h2>
             <p class="sub-tag" style="margin-bottom: 20px;">The files have been unlocked. She's back.</p>
             <!-- Change the link below to the singer's material -->
-            <a href="https://www.youtube.com/watch?v=YOUR_LINK_HERE" target="_blank" class="meet-link">Open Material</a>
+            <a href="https://www.youtube.com/watch?v=YxL3BLy18v4" target="_blank" class="meet-link">Open Material</a>
         </div>
     </div>
 
