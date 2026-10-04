@@ -33,10 +33,8 @@
             align-items: center;
             overflow-x: hidden;
             position: relative;
-            padding: 20px; /* Margines dla telefonów, żeby treść nie kleiła się do krawędzi */
+            padding: 20px;
         }
-
-        /* CRT scanline effect */
         body::before {
             content: " ";
             display: block;
@@ -201,8 +199,6 @@
             50% { opacity: 1; }
             100% { opacity: 0.4; }
         }
-
-        /* Revealed section ("Meet Her") after timer ends */
         .reveal-section {
             display: none;
             animation: glitch-appear 0.8s ease-in-out forwards;
@@ -216,14 +212,12 @@
             margin-bottom: 15px;
             text-shadow: 0 0 15px var(--purple-neon);
         }
-
         @media (min-width: 768px) {
             .meet-header {
                 font-size: 2rem;
                 letter-spacing: 5px;
             }
         }
-
         .meet-link {
             display: inline-block;
             background: rgba(162, 34, 239, 0.15);
@@ -238,7 +232,6 @@
             transition: all 0.3s ease;
             word-break: break-all;
         }
-
         @media (min-width: 768px) {
             .meet-link {
                 padding: 15px 30px;
@@ -246,7 +239,6 @@
                 letter-spacing: 3px;
             }
         }
-
         .meet-link:hover {
             background: var(--purple-neon);
             border-color: #fff;
@@ -260,14 +252,12 @@
             50% { opacity: 0.8; transform: scale(1.02); }
             100% { opacity: 1; transform: scale(1); }
         }
-
         .footer-tag {
             margin-top: 15px;
             font-size: 0.55rem;
             color: #4a3d59;
             letter-spacing: 1px;
         }
-
         @media (min-width: 768px) {
             .footer-tag {
                 position: absolute;
@@ -280,16 +270,11 @@
     </style>
 </head>
 <body>
-
     <div class="wall-bg"></div>
-
     <div class="container">
         <div id="countdown-view">
             <h1 class="graffiti-title">Do you know<br><span>Frankie?</span></h1>
             <div class="sub-tag">Investigation Active</div>
-
-            <div class="target-info">Truth revealed on: 24.10.2026 &mdash; 21:00</div>
-
             <div class="countdown-box">
                 <div class="time-segment">
                     <span class="time-number" id="days">00</span>
@@ -308,19 +293,15 @@
                     <span class="time-label">SEC</span>
                 </div>
             </div>
-
             <p class="warning-text">The clock is ticking. Don't look away.</p>
         </div>
-
         <div id="reveal-view" class="reveal-section">
             <h2 class="meet-header">MEET HER</h2>
             <p class="sub-tag" style="margin-bottom: 20px;">The files have been unlocked.</p>
             <a href="https://www.youtube.com/watch?v=YxL3BLy18v4" target="_blank" class="meet-link">Open Material</a>
         </div>
     </div>
-
     <div class="footer-tag">FRANKIE_CASE_FILE_2026 // ALL RIGHTS RESERVED</div>
-
     <script>
         const targetTime = new Date("October 24, 2026 21:00:00").getTime();
 
