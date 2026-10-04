@@ -33,8 +33,9 @@
             align-items: center;
             overflow-x: hidden;
             position: relative;
-            padding: 20px;
+            padding: 15px;
         }
+
         body::before {
             content: " ";
             display: block;
@@ -59,23 +60,24 @@
             background: var(--panel-bg);
             border: 2px solid #282033;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(162, 34, 239, 0.1);
-            padding: 30px 20px;
-            max-width: 650px;
+            padding: 25px 15px;
+            max-width: 600px;
             width: 100%;
             position: relative;
         }
 
         @media (min-width: 768px) {
             .container {
-                padding: 35px 50px;
+                padding: 40px 50px;
             }
         }
+
         .graffiti-title {
             font-family: 'Permanent Marker', cursive;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             color: #fff;
             text-transform: uppercase;
-            line-height: 1.1;
+            line-height: 1.2;
             margin-bottom: 5px;
             text-shadow: 3px 3px 0px rgba(0,0,0,0.8);
             transform: rotate(-1.5deg);
@@ -83,20 +85,21 @@
 
         @media (min-width: 768px) {
             .graffiti-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
         }
+
         .graffiti-title span {
             color: var(--purple-neon);
             text-shadow: 0 0 12px var(--purple-neon), 3px 3px 0px rgba(0,0,0,0.9);
         }
 
         .sub-tag {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #8a7a9e;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         @media (min-width: 768px) {
@@ -111,8 +114,8 @@
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
         }
 
         @media (min-width: 768px) {
@@ -124,20 +127,22 @@
         .time-segment {
             background: var(--graphite);
             border: 1px solid #362c44;
-            padding: 8px 6px;
-            min-width: 65px;
+            padding: 8px 4px;
+            flex: 1;
+            max-width: 75px;
             box-shadow: 0 0 10px var(--purple-glow);
         }
 
         @media (min-width: 768px) {
             .time-segment {
-                padding: 10px 12px;
-                min-width: 70px;
+                padding: 12px 10px;
+                max-width: none;
+                min-width: 80px;
             }
         }
 
         .time-number {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             color: #fff;
             text-shadow: 0 0 8px var(--purple-neon);
             display: block;
@@ -150,7 +155,7 @@
         }
 
         .time-label {
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             color: #7d6e8c;
             letter-spacing: 1px;
             margin-top: 4px;
@@ -163,25 +168,8 @@
             }
         }
 
-        .target-info {
-            font-size: 0.75rem;
-            color: #a89bb8;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            border-top: 1px dashed #282033;
-            border-bottom: 1px dashed #282033;
-            padding: 8px 0;
-        }
-
-        @media (min-width: 768px) {
-            .target-info {
-                font-size: 0.8rem;
-                letter-spacing: 2px;
-            }
-        }
-
         .warning-text {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--pink-accent);
             letter-spacing: 1px;
             animation: pulse 1.5s infinite;
@@ -199,6 +187,7 @@
             50% { opacity: 1; }
             100% { opacity: 0.4; }
         }
+
         .reveal-section {
             display: none;
             animation: glitch-appear 0.8s ease-in-out forwards;
@@ -206,18 +195,20 @@
 
         .meet-header {
             font-family: 'Syne', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #fff;
             letter-spacing: 3px;
             margin-bottom: 15px;
             text-shadow: 0 0 15px var(--purple-neon);
         }
+
         @media (min-width: 768px) {
             .meet-header {
                 font-size: 2rem;
                 letter-spacing: 5px;
             }
         }
+
         .meet-link {
             display: inline-block;
             background: rgba(162, 34, 239, 0.15);
@@ -225,13 +216,15 @@
             text-decoration: none;
             padding: 12px 20px;
             border: 2px solid var(--purple-neon);
-            font-size: 0.95rem;
-            letter-spacing: 2px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
             box-shadow: 0 0 20px var(--purple-neon);
             transition: all 0.3s ease;
+            max-width: 100%;
             word-break: break-all;
         }
+
         @media (min-width: 768px) {
             .meet-link {
                 padding: 15px 30px;
@@ -239,6 +232,7 @@
                 letter-spacing: 3px;
             }
         }
+
         .meet-link:hover {
             background: var(--purple-neon);
             border-color: #fff;
@@ -252,16 +246,21 @@
             50% { opacity: 0.8; transform: scale(1.02); }
             100% { opacity: 1; transform: scale(1); }
         }
+
         .footer-tag {
-            margin-top: 15px;
-            font-size: 0.55rem;
+            margin-top: 20px;
+            font-size: 0.5rem;
             color: #4a3d59;
             letter-spacing: 1px;
+            word-break: break-all;
         }
+
         @media (min-width: 768px) {
             .footer-tag {
                 position: absolute;
                 bottom: 10px;
+                left: 0;
+                right: 0;
                 margin-top: 0;
                 font-size: 0.65rem;
                 letter-spacing: 2px;
