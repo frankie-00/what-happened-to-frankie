@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What happened to Frankie?</title>
-    <!-- Y2K / grunge / digital fonts -->
+    <title>Do you know Frankie?</title>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Share+Tech+Mono&family=Syne:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -73,8 +72,6 @@
                 padding: 35px 50px;
             }
         }
-
-        /* Missing person style title */
         .graffiti-title {
             font-family: 'Permanent Marker', cursive;
             font-size: 1.8rem;
@@ -91,8 +88,6 @@
                 font-size: 2.2rem;
             }
         }
-
-        /*  in glowing purple */
         .graffiti-title span {
             color: var(--purple-neon);
             text-shadow: 0 0 12px var(--purple-neon), 3px 3px 0px rgba(0,0,0,0.9);
@@ -114,13 +109,12 @@
             }
         }
 
-        /* Countdown */
         .countdown-box {
             display: flex;
             justify-content: center;
             gap: 8px;
             margin-bottom: 25px;
-            flex-wrap: wrap; /* Zawijanie segmentów na bardzo małych ekranach */
+            flex-wrap: wrap;
         }
 
         @media (min-width: 768px) {
@@ -290,7 +284,6 @@
     <div class="wall-bg"></div>
 
     <div class="container">
-        <!-- View before time runs out -->
         <div id="countdown-view">
             <h1 class="graffiti-title">Do you know<br><span>Frankie?</span></h1>
             <div class="sub-tag">Investigation Active</div>
@@ -319,11 +312,9 @@
             <p class="warning-text">The clock is ticking. Don't look away.</p>
         </div>
 
-        <!-- View after time runs out (Meet Her) -->
         <div id="reveal-view" class="reveal-section">
             <h2 class="meet-header">MEET HER</h2>
             <p class="sub-tag" style="margin-bottom: 20px;">The files have been unlocked.</p>
-            <!-- Change the link below to the singer's material -->
             <a href="https://www.youtube.com/watch?v=YxL3BLy18v4" target="_blank" class="meet-link">Open Material</a>
         </div>
     </div>
@@ -331,7 +322,6 @@
     <div class="footer-tag">FRANKIE_CASE_FILE_2026 // ALL RIGHTS RESERVED</div>
 
     <script>
-        // Target date: October 24, 2026, 21:00:00
         const targetTime = new Date("October 24, 2026 21:00:00").getTime();
 
         const timerInterval = setInterval(function() {
